@@ -24,16 +24,28 @@ header h1 {
     font-weight: bold;
 }
 
-header h1 .blue { color: #306bdc; }
-header h1 .developer { color: #000000; }
+header h1 .blue { 
+  color: #306bdc; 
+}
+header h1 .developer { 
+  color: #000000; 
+}
 
 header a { 
     color: #d6e6ff; 
     text-decoration: none; 
 }
 
-header a .find { font-weight: bold; color: #306bdc; font-size: 20px; }
-header a .now { font-weight: bold; color: #000000; font-size: 20px; }
+header a .find { 
+  font-weight: bold; 
+  color: #306bdc; 
+  font-size: 20px; 
+}
+header a .now { 
+  font-weight: bold; 
+  color: #000000; 
+  font-size: 20px; 
+}
 
 nav {
     background: #3578f7;
