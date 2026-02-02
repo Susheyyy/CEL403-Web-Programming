@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+html, body {
+    height: 100%;
+    background: #042b74; 
+}
+
+header {
+    background: #0a3f8f;
+    color: #fff;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 36px; 
+    font-weight: bold;
+}
+
+header h1 .blue { color: #306bdc; }
+header h1 .developer { color: #000000; }
+
+header a { 
+    color: #d6e6ff; 
+    text-decoration: none; 
+}
+
+header a .find { font-weight: bold; color: #306bdc; font-size: 20px; }
+header a .now { font-weight: bold; color: #000000; font-size: 20px; }
+
+nav {
+    background: #3578f7;
+    padding: 10px 20px;
+}
+
+nav a {
+    color: #fff;
+    margin-right: 20px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.sidebar {
+    width: 200px;
+    background: #3b7ef1;
+    border-radius: 15px;
+    padding: 10px;
+    color: #000;
+    max-height: 500px;
+}
+
+.sidebar h3 { 
+    border-bottom: 3px solid #000; 
+    padding-bottom: 5px; 
+}
+
+.sidebar ul { 
+  list-style: none; 
+}
+.sidebar ul li { 
+  border-bottom: 3px dashed #000; 
+  padding: 8px 0; 
+}
+.sidebar ul li a { 
+    color: #003399; 
+    font-weight: bold; 
+    text-decoration: none; 
+    font-size: 13px; 
+}
+
+.content {
+    flex: 1;
+}
+
+.welcome-section {
+    display: flex;
+    gap: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 6px solid #2f6fd3;
+}
+
+.welcome-text { 
+  flex: 2; 
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 6px solid #2f6fd3;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.welcome-text h2 { 
+  color: #000;
+  margin-bottom: 10px; 
+}
+.welcome-text h3 { 
+  color: #2f6fd3; 
+  margin-bottom: 5px; 
+  font-size: 18px; 
+  font-family: 'Times New Roman', Times, serif;
+}
+.welcome-text p { 
+  font-size: 14px; 
+  margin-bottom: 15px; 
+  line-height: 1.4; 
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.devs h3 { 
+  color: #0a3f8f; 
+  margin-bottom: 15px; 
+}
+.dev-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.dev { 
+  text-align: center; 
+  font-size: 13px; 
+}
+.dev span { 
+  color: #0a3f8f; 
+  display: block; 
+  font-weight: bold; 
+}
