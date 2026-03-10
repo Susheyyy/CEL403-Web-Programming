@@ -1,0 +1,55 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+
+.navbar{
+    display:flex;
+    background-color: #333;
+    padding: 10px;
+}
+
+a{
+    color:white;
+    text-decoration:none;
+    padding: 10px;
+}
+
+#theme-toggle{
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #555;
+    color: white;
+    font-size: 14px;
+}
+
+#theme-toggle:hover{
+    background-color: #777;
+}
+
+body{
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode{
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+body.dark-mode .navbar{
+    background-color: #111;
+}
+
+body.dark-mode #theme-toggle{
+    background-color: #ddd;
+    color: #000;
+}
+
+body.dark-mode #theme-toggle:hover{
+    background-color: #fff;
+}
