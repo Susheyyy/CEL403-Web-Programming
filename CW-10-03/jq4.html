@@ -1,0 +1,17 @@
+<html>
+    <head>
+<script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){ 
+        $("div").animate({bottom:'250px'});
+});
+    });
+        </script>
+    </head>
+    <body>
+        <button>Start Animation</button>
+        <p>This is a paragraph</p>
+        <div style="position:absolute; bottom:0; width:100px; height:100px; background-color:rgb(172, 148, 230);"></div>
+    </body>
+</html>
