@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript Practice - Arrays, Date, Math</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 24px;
+			line-height: 1.6;
+		}
+		h1 {
+			margin-bottom: 8px;
+		}
+		pre {
+			background: #f6f8fa;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			padding: 14px;
+			white-space: pre-wrap;
+		}
+	</style>
+</head>
+<body>
+	<h1>JavaScript Concepts Demo</h1>
+	<p>Arrays, callback functions, Date and Math objects, prime and perfect numbers.</p>
+	<pre id="output"></pre>
+
+	<script>
+		const output = document.getElementById("output");
+		let report = "";
+
+		function addLine(text) {
+			report += text + "\n";
+		}
+
+		addLine("=== ARRAYS AND SORT ===");
+		const numbers = [45, 12, 88, 9, 31, 50, 3];
+		addLine("Original array: " + numbers.join(", "));
+
+		const ascSorted = [...numbers].sort(function (a, b) {
+			return a - b;
+		});
+		addLine("Sorted ascending: " + ascSorted.join(", "));
+
+		const descSorted = [...numbers].sort(function (a, b) {
+			return b - a;
+		});
+		
+		function processArray(arr, callbackFn) {
+			return arr.map(callbackFn);
+		}
+
+		function square(n) {
+			return n * n;
+		}
+
+		const squared = processArray(numbers, square);
+		addLine("Squared values (callback function): " + squared.join(", "));
+
+		const doubled = processArray(numbers, function (n) {
+			return n * 2;
+		});
+		addLine("Doubled values (anonymous callback): " + doubled.join(", "));
+
+		const evenNumbers = numbers.filter(function (n) {
+			return n % 2 === 0;
+		});
+		addLine("Even numbers (filter callback): " + evenNumbers.join(", "));
+
+		addLine("\n=== DATE OBJECT ===");
+		const now = new Date();
+		addLine("Current date and time: " + now.toString());
+		addLine("Year: " + now.getFullYear());
+		addLine("Month (1-12): " + (now.getMonth() + 1));
+		addLine("Day of month: " + now.getDate());
+		addLine("Day of week (0-6): " + now.getDay());
+
+		addLine("\n=== MATH OBJECT ===");
+		addLine("Math.PI: " + Math.PI);
+		addLine("Math.sqrt(81): " + Math.sqrt(81));
+		addLine("Math.pow(3, 4): " + Math.pow(3, 4));
+		addLine("Math.ceil(4.2): " + Math.ceil(4.2));
+		addLine("Math.floor(4.9): " + Math.floor(4.9));
+		addLine("Random number (0 to 1): " + Math.random());
+
+		addLine("\n=== PRIME NUMBER FUNCTION ===");
+		function isPrime(num) {
+			if (num <= 1) {
+				return false;
+			}
+			for (let i = 2; i <= Math.sqrt(num); i++) {
+				if (num % i === 0) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		const primeCheckNumbers = [2, 7, 12, 19, 25, 31];
+		primeCheckNumbers.forEach(function (n) {
+			addLine(n + (isPrime(n) ? " is prime" : " is not prime"));
+		});
+
+		addLine("\n=== PERFECT NUMBER FUNCTION ===");
+		function isPerfect(num) {
+			if (num <= 1) {
+				return false;
+			}
+
+			let sum = 1;
+			for (let i = 2; i <= Math.sqrt(num); i++) {
+				if (num % i === 0) {
+					sum += i;
+					const pair = num / i;
+					if (pair !== i) {
+						sum += pair;
+					}
+				}
+			}
+			return sum === num;
+		}
+
+		const perfectCheckNumbers = [6, 10, 28, 30, 496];
+		perfectCheckNumbers.forEach(function (n) {
+			addLine(n + (isPerfect(n) ? " is a perfect number" : " is not a perfect number"));
+		});
+
+		output.textContent = report;
+	</script>
+</body>
+</html>
