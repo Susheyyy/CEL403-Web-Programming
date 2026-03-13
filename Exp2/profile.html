@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Personal Profile</title>
+	<link rel="stylesheet" href="profile.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="brand">My Profile</div>
+		<nav class="site-nav">
+			<a href="#about">About</a>
+			<a href="#skills">Skills</a>
+			<a href="#projects">Projects</a>
+			<a href="#contact">Contact</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero" id="about">
+			<div class="hero-text">
+				<p class="eyebrow">Student Portfolio</p>
+				<h1>Chandrayan Paul</h1>
+				<p>
+					I am a web programming student who enjoys building clean,
+					responsive pages with HTML, CSS, and JavaScript.
+				</p>
+				<a href="#contact" class="cta-btn">Get In Touch</a>
+			</div>
+			<div class="hero-card">
+				<h2>Quick Info</h2>
+				<p><strong>Role:</strong> Student</p>
+				<p><strong>Focus:</strong> Front-End Development</p>
+				<p><strong>Location:</strong> India</p>
+			</div>
+		</section>
+
+		<section class="content-section" id="skills">
+			<h2>Skills</h2>
+			<div class="card-grid">
+				<article class="info-card">
+					<h3>HTML5</h3>
+					<p>Creating semantic page structures with accessible content.</p>
+				</article>
+				<article class="info-card">
+					<h3>CSS3</h3>
+					<p>Designing responsive layouts, forms, and navigation bars.</p>
+				</article>
+				<article class="info-card">
+					<h3>JavaScript</h3>
+					<p>Adding interactivity through DOM manipulation and events.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="content-section alt-section" id="projects">
+			<h2>Projects</h2>
+			<div class="card-grid">
+				<article class="info-card">
+					<h3>Portfolio Pages</h3>
+					<p>Built multiple portfolio layouts using structured HTML and custom CSS.</p>
+				</article>
+				<article class="info-card">
+					<h3>Blog Layout</h3>
+					<p>Created a styled blog page with media, forms, and modern sections.</p>
+				</article>
+				<article class="info-card">
+					<h3>Navigation Design</h3>
+					<p>Developed clean navbar components for lab assignments and practice work.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="content-section" id="contact">
+			<h2>Contact</h2>
+			<form class="contact-form" action="#">
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name" placeholder="Enter your name">
+
+				<label for="email">Email</label>
+				<input type="email" id="email" name="email" placeholder="Enter your email">
+
+				<label for="message">Message</label>
+				<textarea id="message" name="message" rows="5" placeholder="Write your message"></textarea>
+
+				<button type="submit">Send Message</button>
+			</form>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<p>&copy; 2026 Chandrayan Paul. All rights reserved.</p>
+	</footer>
+</body>
+</html>
