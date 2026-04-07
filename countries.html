@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Country and Capital Selector</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#dcd3ff,#f2eeff);
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:16px;
+box-shadow:0 12px 30px rgba(0,0,0,0.1);
+width:420px;
+text-align:center;
+}
+
+h1{
+margin-bottom:25px;
+color:#4b3fa8;
+font-size:28px;
+}
+
+.row{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+label{
+font-weight:600;
+color:#444;
+}
+
+select{
+padding:12px;
+border-radius:8px;
+border:1px solid #cfc6ff;
+font-size:16px;
+outline:none;
+transition:all 0.3s ease;
+}
+
+select:hover{
+border-color:#9b8cff;
+}
+
+select:focus{
+border-color:#7a6cff;
+box-shadow:0 0 0 3px rgba(122,108,255,0.2);
+}
+
+#capitalText{
+margin-top:15px;
+font-size:20px;
+font-weight:600;
+color:#ff4fb3;
+background:#fff0fa;
+padding:12px;
+border-radius:8px;
+transition:all 0.3s ease;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Country & Capital</h1>
+
+<div class="row">
+
+<label for="countrySelect">Select Country</label>
+
+<select id="countrySelect">
+<option value="">-- Choose Country --</option>
+<option value="India">India</option>
+<option value="Japan">Japan</option>
+<option value="France">France</option>
+<option value="Brazil">Brazil</option>
+<option value="Australia">Australia</option>
+</select>
+
+<div id="capitalText">Capital: -</div>
+
+</div>
+
+</div>
+
+<script>
+
+const countrySelect=document.getElementById("countrySelect");
+const capitalText=document.getElementById("capitalText");
+
+const capitals={
+India:"New Delhi",
+Japan:"Tokyo",
+France:"Paris",
+Brazil:"Brasilia",
+Australia:"Canberra"
+};
+
+countrySelect.addEventListener("change",function(){
+
+const selectedCountry=countrySelect.value;
+const capital=capitals[selectedCountry]||"-";
+
+capitalText.textContent="Capital: "+capital;
+
+});
+
+</script>
+
+</body>
+</html>

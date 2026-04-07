@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#dcdde1;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:12px;
+width:400px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:15px;
+}
+
+button{
+width:100%;
+margin-top:20px;
+padding:12px;
+background:#4a6cf7;
+border:none;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#3651d4;
+}
+
+.error{
+color:red;
+font-size:14px;
+margin-top:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Registration Form</h2>
+
+<form id="registerForm">
+
+<input type="text" id="name" placeholder="Enter Name">
+<div class="error" id="nameError"></div>
+
+<input type="text" id="email" placeholder="Enter Email">
+<div class="error" id="emailError"></div>
+
+<input type="tel" id="phone" placeholder="Enter Phone Number">
+<div class="error" id="phoneError"></div>
+
+<input type="password" id="password" placeholder="Enter Password">
+<div class="error" id="passwordError"></div>
+
+<button type="submit">Register</button>
+
+</form>
+
+</div>
+
+<script>
+
+const form=document.getElementById("registerForm");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("name").value.trim();
+let email=document.getElementById("email").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let password=document.getElementById("password").value.trim();
+
+let namePattern=/^[A-Za-z ]+$/;
+let emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+let phonePattern=/^[6-9]\d{9}$/;
+let passwordPattern=/^.{6,}$/;
+
+let valid=true;
+
+document.getElementById("nameError").textContent="";
+document.getElementById("emailError").textContent="";
+document.getElementById("phoneError").textContent="";
+document.getElementById("passwordError").textContent="";
+
+if(!namePattern.test(name)){
+document.getElementById("nameError").textContent="Enter valid name (letters only)";
+valid=false;
+}
+
+if(!emailPattern.test(email)){
+document.getElementById("emailError").textContent="Enter valid email";
+valid=false;
+}
+
+if(!phonePattern.test(phone)){
+document.getElementById("phoneError").textContent="Enter valid 10 digit phone number";
+valid=false;
+}
+
+if(!passwordPattern.test(password)){
+document.getElementById("passwordError").textContent="Password must be at least 6 characters";
+valid=false;
+}
+
+if(valid){
+alert("Registration Successful!");
+form.reset();
+}
+
+});
+
+</script>
+
+</body>
+</html>

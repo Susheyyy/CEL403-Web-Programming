@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Read JSON using AJAX</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:40px;
+background:#f4f6fb;
+}
+
+button{
+padding:10px 16px;
+background:#4a6cf7;
+border:none;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#3249c5;
+}
+
+#output{
+margin-top:20px;
+font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Read JSON File using AJAX</h2>
+
+<button onclick="loadData()">Load Data</button>
+
+<div id="output"></div>
+
+<script>
+
+function loadData(){
+
+var xhr=new XMLHttpRequest();
+
+xhr.open("GET","data.json",true);
+
+xhr.onreadystatechange=function(){
+
+if(xhr.readyState==4 && xhr.status==200){
+
+var data=JSON.parse(xhr.responseText);
+
+var result="";
+
+data.students.forEach(function(student){
+
+result+="Name: "+student.name+" | Age: "+student.age+"<br>";
+
+});
+
+document.getElementById("output").innerHTML=result;
+
+}
+
+};
+
+xhr.send();
+
+}
+
+</script>
+
+</body>
+</html>
