@@ -9,7 +9,9 @@ function CounterComponent() {
       <p>Count Components - {count}</p>
       <h6>Number is {count%2===0?"even":"odd"}</h6>
       <h6>Value is {value}</h6>
-      <button onClick={value}>Change</button>
+      <button onClick={()=>{
+        setvalue("meow");
+      }}>Change</button>
       <button onClick={()=>setcount(count+1)}>Increment</button>
       <button onClick={()=>setcount(count-1)}>Decrement</button>
     </>
