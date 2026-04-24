@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth System</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        .auth-card { background: white; padding: 25px; border-radius: 10px; width: 320px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h3 { margin-top: 0; color: #333; }
+        input { width: 93%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #0056b3; }
+        .msg { margin-top: 15px; font-size: 0.85rem; text-align: center; min-height: 18px; }
+        .error { color: #d93025; }
+        .success { color: #188038; }
+    </style>
+</head>
+<body>
+
+<div class="auth-card">
+    <h3>Sign In</h3>
+    <p style="font-size: 0.8rem; color: #666;">Handling credentials via JSON/AJAX</p>
+    
+    <input type="text" id="email" placeholder="Email Address">
+    <input type="password" id="pass" placeholder="Password">
+    
+    <button onclick="submitAuth()">Login</button>
+    
+    <div id="statusMsg" class="msg"></div>
+</div>
+
+<script>
+    async function submitAuth() {
+        const email = document.getElementById('email').value;
+        const pass = document.getElementById('pass').value;
+        const status = document.getElementById('statusMsg');
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; 
+
+        status.className = "msg"; 
+        
+        if (!emailPattern.test(email)) {
+            status.innerText = "Invalid email format.";
+            status.classList.add("error");
+            return;
+        }
+
+        if (!passPattern.test(pass)) {
+            status.innerText = "Password: Min 6 chars, 1 letter, 1 number.";
+            status.classList.add("error");
+            return;
+        }
+
+        const payload = {
+            userEmail: email,
+            userPass: pass
+        };
+
+        status.innerText = "Authenticating...";
+        status.style.color = "#666";
+
+        try {
+            setTimeout(() => {
+                status.innerText = "Login Successful (AJAX Verified)";
+                status.className = "msg success";
+                console.log("JSON Sent to Server:", JSON.stringify(payload));
+            }, 1000);
+
+        } catch (err) {
+            status.innerText = "Connection failed.";
+            status.classList.add("error");
+        }
+    }
+</script>
+
+</body>
+</html>

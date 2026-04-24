@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Website</title>
+    <style>
+        body { font-family: sans-serif; background: #e0eafc; display: flex; justify-content: center; padding-top: 50px; }
+        .weather-card { 
+            background: white; padding: 25px; border-radius: 15px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 300px; text-align: center; 
+        }
+        input { width: 80%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { 
+            width: 87%; padding: 10px; background: #007bff; color: white; 
+            border: none; border-radius: 5px; cursor: pointer; font-weight: bold;
+        }
+        #info { margin-top: 20px; display: none; text-align: left; background: #f9f9f9; padding: 15px; border-radius: 8px; }
+        .error { color: red; margin-top: 10px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<div class="weather-card">
+    <h3>Travel Weather</h3>
+    <input type="text" id="cityInput" placeholder="Enter city (e.g. London)">
+    <button onclick="getWeather()">Get Weather</button>
+    
+    <div id="error-msg" class="error"></div>
+
+    <div id="info">
+        <strong id="cityName"></strong>
+        <p>Condition: <span id="cond"></span></p>
+        <p>Temperature: <span id="temp"></span>°C</p>
+        <p>Humidity: <span id="hum"></span>%</p>
+    </div>
+</div>
+
+<script>
+    async function getWeather() {
+        const city = document.getElementById('cityInput').value;
+        const infoDiv = document.getElementById('info');
+        const errorDiv = document.getElementById('error-msg');
+        
+        const apiKey = 'YOUR_API_KEY_HERE'; 
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+        errorDiv.innerText = ""; 
+
+        try {
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error("City not found");
+            }
+
+            const data = await response.json();
+
+            document.getElementById('cityName').innerText = data.name + ", " + data.sys.country;
+            document.getElementById('cond').innerText = data.weather[0].main;
+            document.getElementById('temp').innerText = data.main.temp;
+            document.getElementById('hum').innerText = data.main.humidity;
+
+            infoDiv.style.display = "block";
+        } catch (err) {
+            infoDiv.style.display = "none";
+            errorDiv.innerText = err.message;
+        }
+    }
+</script>
+
+</body>
+</html>
