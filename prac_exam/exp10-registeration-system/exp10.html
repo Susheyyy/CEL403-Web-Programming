@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration System</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f0f0; display: flex; justify-content: center; padding-top: 50px; }
+        
+        .form-card { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 320px;
+        }
+
+        .field { margin-bottom: 15px; }
+        
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        
+        input { 
+            width: 92%; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        }
+
+        .error-msg { 
+            color: #d93025; 
+            font-size: 12px; 
+            margin-top: 5px; 
+            display: none; /* Hidden by default */
+        }
+
+        button { 
+            width: 100%; 
+            padding: 10px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        }
+
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+<div class="form-card">
+    <h3>Create Account</h3>
+    <form id="regForm">
+        <div class="field">
+            <label>Name</label>
+            <input type="text" id="userName" placeholder="Enter Name">
+            <div id="nameError" class="error-msg">Name is required.</div>
+        </div>
+
+        <div class="field">
+            <label>Email</label>
+            <input type="text" id="userEmail" placeholder="Enter Email">
+            <div id="emailError" class="error-msg">Please enter a valid email.</div>
+        </div>
+
+        <div class="field">
+            <label>Password</label>
+            <input type="password" id="userPass" placeholder="Enter Password">
+            <div id="passError" class="error-msg">Password cannot be empty.</div>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+    <p id="successMsg" style="color: green; display: none; text-align: center;">Success!</p>
+</div>
+
+<script>
+    document.getElementById('regForm').addEventListener('submit', function(e) {
+               e.preventDefault();
+
+        const name = document.getElementById('userName').value;
+        const email = document.getElementById('userEmail').value;
+        const pass = document.getElementById('userPass').value;
+        
+        document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+        document.getElementById('successMsg').style.display = 'none';
+
+        let isValid = true;
+
+        if (name.trim() === "") {
+            document.getElementById('nameError').style.display = 'block';
+            isValid = false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById('emailError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (pass === "") {
+            document.getElementById('passError').style.display = 'block';
+            isValid = false;
+        }
+
+        if (isValid) {
+            document.getElementById('successMsg').style.display = 'block';
+            this.reset(); 
+        }
+    });
+</script>
+
+</body>
+</html>

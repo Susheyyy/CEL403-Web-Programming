@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Array Calculator</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .box { border: 1px solid #ccc; padding: 15px; max-width: 400px; }
+        .results { margin-top: 10px; color: blue; }
+        button { margin-right: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <p><strong>Numbers:</strong> [2, 4, 6, 8, 10]</p>
+    
+    <button onclick="run(square)">Square</button>
+    <button onclick="run(cube)">Cube</button>
+    
+    <div class="results" id="output"></div>
+</div>
+
+<script>
+    const data = [2, 4, 6, 8, 10];
+
+    function process(arr, callback) {
+        let result = [];
+        for(let i = 0; i < arr.length; i++) {
+            result.push(callback(arr[i]));
+        }
+        return result;
+    }
+
+    const square = (n) => n * n;
+    const cube = (n) => n * n * n;
+
+    function run(mathOp) {
+        const calculated = process(data, mathOp);
+        document.getElementById('output').innerText = "Result: " + calculated.join(", ");
+    }
+</script>
+
+</body>
+</html>

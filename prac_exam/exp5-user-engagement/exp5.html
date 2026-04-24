@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Engagement</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #f8f9fa; 
+            display: flex; 
+            justify-content: center; 
+            padding: 50px; 
+        }
+
+        .engagement-card { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+            width: 320px; 
+        }
+
+        .header { font-weight: bold; font-size: 1.2rem; margin-bottom: 10px; }
+
+        .btn-group { display: flex; gap: 10px; margin: 15px 0; }
+
+        button { 
+            flex: 1;
+            padding: 10px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .like-btn { background-color: #e7f3ff; color: #1877f2; }
+        .like-btn.active { background-color: #1877f2; color: white; }
+
+        .comment-input {
+            width: 93%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        #comment-list {
+            font-size: 0.9rem;
+            color: #555;
+            list-style: none;
+            padding: 0;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        .comment-item { padding: 5px 0; border-bottom: 1px dashed #eee; }
+    </style>
+</head>
+<body>
+
+<div class="engagement-card">
+    <div class="header">Modern UI Engagement</div>
+    <p style="color: #666; font-size: 0.9rem;">Interact with this post to see dynamic updates.</p>
+
+    <div class="btn-group">
+        <button id="likeBtn" class="like-btn" onclick="toggleLike()">Like <span id="count">0</span></button>
+    </div>
+
+    <input type="text" id="commentBox" class="comment-input" placeholder="Write a comment...">
+    <button style="background: #333; color: white;" onclick="addComment()">Post</button>
+
+    <ul id="comment-list">
+        </ul>
+</div>
+
+<script>
+    let likes = 0;
+    let isLiked = false;
+
+    function toggleLike() {
+        const btn = document.getElementById('likeBtn');
+        const countSpan = document.getElementById('count');
+        
+        if (!isLiked) {
+            likes++;
+            btn.classList.add('active');
+            isLiked = true;
+        } else {
+            likes--;
+            btn.classList.remove('active');
+            isLiked = false;
+        }
+        countSpan.innerText = likes;
+    }
+
+    function addComment() {
+        const input = document.getElementById('commentBox');
+        const list = document.getElementById('comment-list');
+
+        if (input.value.trim() !== "") {
+            const li = document.createElement('li');
+            li.className = 'comment-item';
+            li.innerText = input.value;
+            list.appendChild(li);
+            input.value = ""; 
+        }
+    }
+</script>
+
+</body>
+</html>
