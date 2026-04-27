@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <style>
+        body{
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        .subbody{
+            margin-top: 20px;
+            padding: 20px;
+            background-color: antiquewhite;
+            width: 320px;
+        }
+        .formdivs{
+            margin-bottom: 10px;
+        }
+        .dark{
+            background-color: black;
+            color: white;
+        }
+        .dark .subbody{
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="subbody" >
+        <button onclick=toggle() >Switch mode</button>
+        <div class="formdivs" ><input type="text" id="name" placeholder="enter name"/></div>
+        <div class="formdivs" ><input type="text" id="email" placeholder="enter email"/></div>
+        <div class="formdivs" ><input type="password" id="password" placeholder="enter password"/></div>
+        <div class="formdivs" ><input type="number" id="age" placeholder="enter age"/></div>
+        <button onclick= submit() >Submit</button>
+        <p id="status" ></p>
+    </div>
+    <script>
+        function toggle(){
+            document.body.classList.toggle("dark");
+        }
+
+        function submit(){
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const age = document.getElementById("age").value;
+            const password = document.getElementById("password").value;
+             const status = document.getElementById("status");
+
+            const namepattern = /^[A-Za-z ]+$/
+            const emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            const passwordpattern = /^(?=.*[A-Z])(?=.*\d).{6,}$/
+
+            if(!namepattern.test(name)){
+                status.innerText="name doesnt match"
+                return 1;
+                
+            }
+
+            if(!emailpattern.test(email)){
+                 status.innerText="email doesnt match"
+                return 1;
+               
+            }
+
+            if(!passwordpattern.test(password)){
+                status.innerText="password doesnt match"
+                return 1;
+                
+            }
+
+            status.innerText="All good";
+
+
+        }
+    </script>
+</body>
+</html>

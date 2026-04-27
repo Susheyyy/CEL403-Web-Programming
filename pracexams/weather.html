@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+</head>
+<body>
+    <form onsubmit="handleSubmit(event)" >
+        <input type="text" id="city" placeholder="enter weather"/>
+        <button type="submit"  >Check weather</button>
+    </form>
+    <p id ="result"></p>
+    
+    <script>
+        async function handleSubmit(event){
+            event.preventDefault();
+            console.log("form will be submitted");
+            const city = document.getElementById("city").value;
+            const result= document.getElementById("result");
+            const res = await fetch(`http://api.weatherapi.com/v1/current.json?key=bd20a8d5ad4240a6adc141742262704&q=${city}`);
+            const data = await res.json();
+            console.log(data.current);
+            console.log(data.current.temp_c);
+            console.log(data.current.feelslike_c);
+            console.log(data.current.humidity);
+            console.log(data.current.precip_in);
+            result.innerHTML=`Temperature: ${data.current.temp_c}<br>
+                              Feelslike: ${data.current.feelslike_c}<br>
+                              Humidity: ${data.current.humidity}<br>
+                              Precipitation: ${data.current.precip_in}  `
+        }
+    </script>
+</body>
+</html>
+
+<!-- bd20a8d5ad4240a6adc141742262704
+
+ http://api.weatherapi.com/v1
+ /current.json
+
+ http://api.weatherapi.com/v1/current.json?key=bd20a8d5ad4240a6adc141742262704&q=Mumbai -->

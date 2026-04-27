@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: white;
+            color: black;
+        }
+        .dark-mode{
+            background-color: black;
+            color: white;
+        }
+        .container{
+            background-color: brown;
+            color: gray;
+        }
+        button{
+                cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">This is a container</div>
+    <button onclick=colortoggle() >Switch mode</button>
+    <script>
+        async function colortoggle(){
+          document.body.classList.toggle("dark-mode");
+          const box = document.getElementById("box");
+            box.classList.toggle("container");
+        }
+        
+    </script>
+</body>
+</html>

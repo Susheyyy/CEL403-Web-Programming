@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Form validation</h3>
+    <input type="text" id="email" placeholder="enter email" />
+    <input type = "password" id="password" placeholder="enter password"/>
+    <button onclick=submit() >Submit</button>
+
+    <div id="status"></div>
+
+    <script>
+          
+
+          async function submit(){
+            const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          const status = document.getElementById('status');
+          console.log(email);
+          console.log(password);
+
+          const emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+/ ;
+          const passwordpattern= /^(?=.*[A-Z])(?=.*\d).{6,}/;
+                 
+          if(!emailpattern.test(email)){
+            status.innerText="Invalid email format";
+            return;
+          }
+          if(!passwordpattern.test(password)){
+            status.innerText="Invalid password format";
+            return;
+          }
+
+          const payload = {
+            email:email,
+            password: password
+          }
+
+          console.log("payload sent to server ",JSON.stringify(payload));
+
+          status.innerHTML="Login successful";
+
+          }
+    </script>
+</body>
+</html>

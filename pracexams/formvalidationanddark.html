@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+           height: 100vh;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+        .subbody{
+           
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .formdivs{
+            padding: 20px;
+        }
+        .dark{
+            background-color: black;
+            color: white;
+        }
+        .dark .subbody{
+            background-color: #333;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="subbody"  >
+        <div style="margin-bottom:30px ;" ><button  onclick=toggle() id="btn">Switch mode</button></div>
+        <h3>Submission form</h3>
+        <div class="formdivs" > <input type="text" id="name" placeholder="enter name"/></div>
+         <div class="formdivs" > <input type="text" id="email" placeholder="enter email"/></div>
+        <div class="formdivs" ><input type="number" id="phonenumber" placeholder="enter phonenumber" /></div>
+        <div class="formdivs" ><input type="number" id="age" placeholder="enter age" /></div>
+        <div class="formdivs" ><input type="password" id="password" placeholder="enter password"/></div>
+        <button onclick=submit() >Submit</button> 
+        <p class="stat" id="status"></p>
+    </div>
+
+    <script>
+        function toggle(){
+            document.body.classList.toggle("dark");
+        }
+
+        function submit(){
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phonenumber = document.getElementById("phonenumber").value;
+            const age = document.getElementById("age").value;
+            const password = document.getElementById("password").value;
+            const status=document.getElementById("status");
+
+            const namepattern = /^[A-Za-z ]+$/
+            const emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ 
+            const phonepattern = /^[0-9]{10}$/
+            const passpattern = /^(?=.*[A-Z])(?=.*\d).{6,}$/
+
+            if(!namepattern.test(name)){
+                status.style.color="red";
+                status.innerText="Name doesnt match required regex";
+                return 1
+            }
+
+            if(!emailpattern.test(email)){
+                status.style.color="red";
+                status.innerText="email doesnt match required regex";
+                return 1
+            }
+
+            if(!phonepattern.test(phonenumber)){
+                status.style.color="red";
+                status.innerText="Phonenumber doesnt match required regex";
+                return 1
+            }
+             if(!passpattern.test(password)){
+                status.style.color="red";
+                status.innerText="Password doesnt match required regex";
+                return 1;
+            }
+            status.style.color="green";
+            status.innerText="All good";
+
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="array" placeholder="enter text" />
+    <select id="operation" required >
+        <option value="">Select an option</option>
+        <option value="square">Square</option>
+        <option value="cube">Cube</option>
+    </select>
+    <button onclick=submit() >Submit</button>
+    <p id="status" ></p>
+    <script>
+
+        function square(n){
+            return n*n;
+        }
+
+        function cube(n){
+            return n*n*n;
+        }
+
+        function submit(){
+        const arr = document.getElementById("array").value;
+        const op = document.getElementById("operation").value;
+        
+        
+        const array = arr.split(",").map(Number);
+      
+        arrayprocessing(array,op);
+        }
+
+        function arrayprocessing(array,op){
+            let operation;
+            let result=[];
+            if(op==="cube"){
+                operation=cube;
+            }else if(op==="square"){
+                operation=square;
+            }
+            const status = document.getElementById("status");
+            for (let i = 0; i < array.length; i++) {
+               
+                result.push(operation(array[i]));
+                
+            }
+
+            console.log(result);
+
+            status.innerText= `The processed array is [${result}]`;
+        
+        }
+       
+    </script>
+</body>
+</html>

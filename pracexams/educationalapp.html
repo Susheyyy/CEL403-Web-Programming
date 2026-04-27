@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Interactive Country capital</h3>
+    <select id="country">
+        <option value="">Select country</option>
+        <option value="india">India</option>
+        <option value="usa">USA</option>
+        <option value="germany">Germany</option>
+        <option value="england">England</option>
+    </select>
+    <button onclick=submit() >Submit</button>
+    <p id="countrychosen">You choose: </p>
+    <p id="capital">Capital of the choosen country: </p>
+  
+    <script>
+        async function submit(){
+            const country = document.getElementById("country").value;
+            const countrychosen = document.getElementById("countrychosen");
+            const capital = document.getElementById("capital");
+            const geography={
+                india:"New Delhi",
+                usa:"Wshington DC",
+                germany:"Berlin",
+                england:"London"
+            }
+            console.log(country);
+            countrychosen.innerText=`You choose: ${country}`;
+            capital.innerText=`Capital of the choosen country: ${geography[country]}`;
+        }
+        
+    </script>
+
+</body>
+</html>

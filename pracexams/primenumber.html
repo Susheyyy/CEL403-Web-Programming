@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h3> Prime number checker</h3>
+     <input type="number" id="number" placeholder="enter number" />
+     <button onClick=submit() >Submit</button>
+     <p id ="status"></p>
+     <script>
+        async function submit(){
+             const number = document.getElementById("number").value;
+         const status = document.getElementById("status");
+        if(checkprime()){
+            status.innerText=`${number} is a prime number`;
+            status.style.color="green";
+        }else{
+            status.innerText=`${number} is not a prime number`;
+            status.style.color="red";
+        }
+        }
+
+        function checkprime(){
+            const number = document.getElementById("number").value;
+            count=0;
+            for (let i = 1; i < number; i++) {
+                if(number%i==0){
+                    count++
+                }
+                
+            }
+            if(count==1 && number!=1){
+                console.log("prime number");
+                return true;
+            }else{
+                console.log("not a prime number");
+                return false;
+            }
+        }
+        
+     </script>
+</body>
+</html>

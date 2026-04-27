@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="iarr" type="text" placeholder="enter numbers (1,2,3,4)"/>
+    <select id="op">
+        <option value="">Select an operation</option>
+        <option value="square">Square</option>
+        <option value="cube">Cube</option>
+    </select>
+    <button onClick=submit()>Submit</button>
+    <script>
+        function submit(){
+            const digits=document.getElementById("iarr").value;
+            const op = document.getElementById("op").value;
+            const arr = digits.split(",").map(Number);
+            calculation(arr,op);
+        }
+        function square(n){
+            return n*n;
+        }
+        function cube(n){
+            return n*n*n;
+        }
+        function calculation(arr,op){
+            console.log(arr);
+            console.log(op);
+            let operation;
+            const result=[];
+            if(op==="square"){
+                operation=square;
+            }
+            else if(op==="cube"){
+                operation=cube;
+            }
+            for (let i = 0; i < arr.length; i++) {
+                result.push(operation(arr[i])) ;
+            }
+            console.log(result);
+        }
+    </script>
+</body>
+</html>

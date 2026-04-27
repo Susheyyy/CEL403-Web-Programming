@@ -15,13 +15,16 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-//connection to mongo
-
 const MONGO_URI = process.env.MONGO_URI;
 
-mongoose.connect(MONGO_URI).then
-(() => console.log(" Connected to MongoDB"))
-.catch((err) => console.error(" MongoDB connection error:", err));
+async function connectToDatabase() {
+  try {
+    await mongoose.connect(MONGO_URI);
+    console.log(" Connected to MongoDB");
+  } catch (err) {
+    console.error(" MongoDB connection error:", err);
+  }
+}
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -91,6 +94,19 @@ app.delete('/api/wards/:id', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
-})
+async function startServer() {
+  await connectToDatabase();
+  app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}`);
+  });
+}
+
+if (require.main === module) {
+  startServer();
+}
+
+module.exports = {
+  app,
+  connectToDatabase,
+  startServer,
+};
